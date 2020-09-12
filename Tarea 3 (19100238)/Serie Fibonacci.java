@@ -3,6 +3,7 @@ import java.util.Scanner;
 class SerieFibonacci {
     public static void main (String args[]){
         //Declaracion y asignacion de variables
+
         int Variable1= 0, Variable2=1, Variable3=0, Cantidad=0;
         //Variable para leer datos en consola
         Scanner leer =  new Scanner(System.in);
@@ -12,12 +13,13 @@ class SerieFibonacci {
         System.out.println("\n"+Variable1 +"\n"+ Variable2);
 
         //Ciclo solicitado
-        for(int i=1;i<=Cantidad;i++){
+        int i=1;
+        while(i<=Cantidad){
           Variable3= Variable1 + Variable2;
           System.out.println(Variable3);
           Variable1 =   Variable2;
           Variable2 = Variable3;
-
+          i++;
         }
 
         System.out.println("FIN");
