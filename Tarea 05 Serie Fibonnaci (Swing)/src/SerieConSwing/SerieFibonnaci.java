@@ -6,18 +6,24 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
+import javax.swing.JComboBox;
 
 public class SerieFibonnaci extends JFrame {
-
+	
+	
+	
 	private JPanel contentPane;
 	private JTextField txtValor1;
 	private JTextField txtValor2;
 	private JTextField txtIteraciones;
+	private JComboBox<Integer> cmbResultados;
 
 	/**
 	 * Launch the application.
@@ -39,24 +45,39 @@ public class SerieFibonnaci extends JFrame {
 	 * Create the frame.
 	 */
 	public SerieFibonnaci() {
+		
+		
 		setTitle("Serie Fibonnaci");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 266, 295);
+		setBounds(100, 100, 350, 292);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		JComboBox cboResultados = new JComboBox();
+		cboResultados.setBounds(246, 57, 60, 26);
+		contentPane.add(cboResultados);
 		
 		JButton btnGenerar = new JButton("Generar Serie");
 		btnGenerar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				int intVariable1, intVariable2, intIteraciones;
-				intVariable1= Integer.parseInt(txtValor1.getText());
 				
+				int intValor1=0, intValor2=0, intValor3=0, intIteraciones=0;
+				intValor1= Integer.parseInt(txtValor1.getText());
+				intValor2= Integer.parseInt(txtValor2.getText());
+				intIteraciones= Integer.parseInt(txtIteraciones.getText());
+				
+				for(int i=1; i<=intIteraciones;i++) {
+					intValor3 = intValor1 + intValor2;
+					cboResultados.addItem(Integer.toString(intValor3));
+					intValor1= intValor2;
+					intValor2= intValor3;
+				}
 			}
 		});
-		btnGenerar.setBounds(35, 165, 155, 33);
+		btnGenerar.setBounds(35, 149, 155, 33);
 		contentPane.add(btnGenerar);
 		
 		JLabel lblNewLabel = new JLabel("Valor 1:");
@@ -94,8 +115,16 @@ public class SerieFibonnaci extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnSalir.setBounds(35, 209, 155, 33);
+		btnSalir.setBounds(35, 193, 155, 33);
 		contentPane.add(btnSalir);
+		
+		JLabel lblResultados = new JLabel("Resultados:");
+		lblResultados.setBounds(239, 32, 87, 14);
+		contentPane.add(lblResultados);
+		
+		
+		
+		
 	}
 	private static class __Tmp {
 		private static void __tmp() {
