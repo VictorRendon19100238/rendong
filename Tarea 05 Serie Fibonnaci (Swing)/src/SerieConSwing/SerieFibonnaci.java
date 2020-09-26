@@ -111,7 +111,7 @@ public class SerieFibonnaci extends JFrame {
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Salir de la app
-				System.out.print("Buen dia.");
+				
 				System.exit(0);
 			}
 		});
